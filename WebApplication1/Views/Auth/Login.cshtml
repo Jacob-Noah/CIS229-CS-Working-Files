@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <form method="post" action="@Url.Action("Login", "Auth")">
+        <div class="px-4 pt-5">
+            <input type="text" name="usernameInput" class="form-control" placeholder="Username">
+            <br/>
+            <input type="password" name="passwordInput" class="form-control" placeholder="Password">
+            <br/>
+            <button type="submit" class="btn btn-dark btn-block">Login</button>
+        </div>
+    </form>
+</div>
+
+<div class="px-4">
+    <a href="/Auth/ForgotPassword">Forgot Password?</a>
+</div>

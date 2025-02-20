@@ -1,0 +1,22 @@
+@model List<WebApplication1.Models.UserModel>
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div>
+    <h2>Dashboard</h2>
+    <table class="table">
+        <tr>
+            <th>User Name</th>
+            <th>User Password</th>
+        </tr>
+        @foreach(var user in Model) {
+
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Password</td>
+            </tr>
+
+        }
+    </table>
+</div>
