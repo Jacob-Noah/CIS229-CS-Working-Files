@@ -1,0 +1,22 @@
+@model List<UserModel>
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dashboard</h2>
+
+<table class="table">
+    <tr>
+        <td>User Username</td>
+        <td>User Password</td>
+    </tr>
+    @foreach(var user in Model)
+    {
+        <tr>
+            <td>@user.Username</td>
+            <td>@user.Password</td>
+        </tr>
+    }
+</table>
