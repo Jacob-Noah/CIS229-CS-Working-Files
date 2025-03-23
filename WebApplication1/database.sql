@@ -44,6 +44,14 @@ BEGIN
 END;
 //
 
+CREATE procedure IF NOT EXISTS read_product(
+    id int
+)
+BEGIN
+    SELECT * FROM products WHERE products.id = id;
+END;
+//
+
 CREATE procedure IF NOT EXISTS read_all_products()
 BEGIN
     SELECT * FROM products;
@@ -53,10 +61,11 @@ END;
 CREATE procedure IF NOT EXISTS update_product(
     id int,
     name varchar(32),
-    quantity int
+    quantity int,
+    customer_id int
 )
 BEGIN
-    UPDATE products SET products.name = name, products.quantity = quantity WHERE products.id = id;
+    UPDATE products SET products.name = name, products.quantity = quantity, products.customer_id = customer_id WHERE products.id = id;
 END;
 //
 
