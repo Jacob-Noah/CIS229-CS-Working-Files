@@ -1,0 +1,27 @@
+<!--
+I'm sending the model to this page to prepopulate form data for convenient updating
+-->
+@model ProductModel
+
+@{
+    ViewData["Title"] = "Update Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <form method="post" action="@Url.Action("UpdateProduct", "Products")">
+        <div class="px-4 pt-5">
+            <input type="hidden" name="id" id="id" value="@Model.Id">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="@Model.Name" class="form-control">
+            <br/>
+            <label for="quantity">Quantity</label>
+            <input type="number" name="quantity" id="quantity" value="@Model.Quantity" class="form-control">
+            <br/>
+            <label for="customerId">Customer ID</label>
+            <input type="number" name="customerId" id="customerId" value="@Model.CustomerId" class="form-control">
+            <br/>
+            <button type="submit" class="btn btn-dark btn-block">Update Product @Model.Id</button>
+        </div>
+    </form>
+</div>

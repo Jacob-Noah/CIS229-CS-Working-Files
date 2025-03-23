@@ -1,0 +1,50 @@
+@model List<ProductModel>
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2>Products</h2>
+
+    <!-- I make sure a message exists before showing them -->
+    @if (ViewData["Message"] != null)
+    {
+        <p class="alert" style="padding: 5px 0; color: green;">@ViewData["Message"]</p>
+    } else if (ViewData["Error"] != null)
+    {
+        <p class="alert" style="padding: 5px 0; color: red;">@ViewData["Error"]</p>
+    }
+
+    <a style="margin-bottom: 10px;" class="btn btn-outline-dark" asp-area="" asp-controller="Products" asp-action="New">New Product</a>
+
+    <table class="table">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Quantity</td>
+            <td>Customer ID</td>
+            <td>-</td>
+        </tr>
+        <!--
+        To prevent frequent error where model does not propagate before page load for some reason
+        -->
+        @if (Model.Any())
+        {
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Quantity</td>
+                    <td>@product.CustomerId</td>
+                    <td>
+                        <a class="btn btn-outline-secondary" asp-area="" asp-controller="Products" asp-action="Update" asp-route-id="@product.Id">Update</a>
+                        <a class="btn btn-outline-danger" asp-area="" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
